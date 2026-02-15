@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}Affiliate Site{% endblock %}</title>
+</head>
+<body>
+
+<header style="display:flex; gap:16px; padding:12px 0; border-bottom:1px solid #ddd;">
+  <a href="{% url 'reviews:product_list' %}">Home</a>
+
+  {% for c in nav_categories %}
+    <a href="{% url 'reviews:category_detail' c.slug %}">{{ c.name }}</a>
+  {% endfor %}
+
+  <form action="{% url 'reviews:product_list' %}" method="get" style="margin-left:auto;">
+    <input type="text" name="q" placeholder="Search..." value="{{ request.GET.q }}">
+    <button type="submit">Search</button>
+  </form>
+</header>
+
+<main style="max-width:900px; margin:0 auto; padding:16px;">
+  {% block content %}{% endblock %}
+</main>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ category.name }}</h1>
+
+  {% for product in products %}
+    <div>
+      <h2>
+        <a href="{% url 'reviews:product_detail' product.slug %}">
+          {{ product.name }}
+        </a>
+      </h2>
+      <p>{{ product.description }}</p>
+      <p>£{{ product.price }}</p>
+    </div>
+    <hr>
+  {% empty %}
+    <p>No products in this category yet.</p>
+  {% endfor %}
+
+  <p><a href="{% url 'reviews:product_list' %}">Back to Product List</a></p>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+   
+
+
+    <h1>{{ product.name }}</h1>
+
+    <p>{{ product.description }}</p>
+
+    <p>Category: <a href="{% url 'reviews:category_detail' product.category.slug %}">{{ product.category.name }}</a></p>
+
+    <p><strong>£{{ product.price }}</strong></p>
+
+    <p>
+        <a href="{% url 'reviews:affiliate_redirect' product.slug %}">Buy on Amazon</a>
+    </p>
+
+    <p><a href="{% url 'reviews:product_list' %}">Back to Product List</a></p>
+{% endblock %}
