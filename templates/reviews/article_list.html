@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Articles</h1>
+
+<form method="get" style="display:flex; gap:12px; align-items:center; margin:12px 0;">
+  <input type="text" name="q" placeholder="Search articles..." value="{{ q }}">
+  <button type="submit">Search</button>
+</form>
+
+{% for a in articles %}
+  <div style="border:1px solid #ddd; padding:12px; border-radius:10px; margin-bottom:12px;">
+    <h2 style="margin:0 0 8px;">
+      <a href="{% url 'reviews:article_detail' a.slug %}">{{ a.title }}</a>
+    </h2>
+
+    {% if a.category %}
+      <p style="margin:0 0 8px;">
+        Category: <a href="/?cat={{ a.category.slug }}">{{ a.category.name }}</a>
+      </p>
+    {% endif %}
+
+    {% if a.excerpt %}
+      <p style="margin:0;">{{ a.excerpt|truncatechars:180 }}</p>
+    {% else %}
+      <p style="margin:0;">{{ a.content|truncatechars:180 }}</p>
+    {% endif %}
+  </div>
+{% empty %}
+  <p>No articles yet.</p>
+{% endfor %}
+
+{% if is_paginated %}
+  <div style="margin-top:16px; display:flex; gap:12px; align-items:center;">
+    {% if page_obj.has_previous %}
+      <a href="?q={{ q }}&page={{ page_obj.previous_page_number }}">Prev</a>
+    {% endif %}
+
+    <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+    {% if page_obj.has_next %}
+      <a href="?q={{ q }}&page={{ page_obj.next_page_number }}">Next</a>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% endblock %}

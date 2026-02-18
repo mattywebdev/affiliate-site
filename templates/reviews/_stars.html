@@ -1,0 +1,31 @@
+{# templates/reviews/_stars.html #}
+{% with r=rating|default:0 %}
+<span style="display:inline-flex; gap:3px; align-items:center; white-space:nowrap;">
+  {# 1 #}
+  {% if r >= 1 %}<span style="color:#1f9d3a;">★</span>
+  {% elif r >= 0.5 %}<span style="color:#1f9d3a;">⯨</span>
+  {% else %}<span style="color:#bbb;">☆</span>{% endif %}
+
+  {# 2 #}
+  {% if r >= 2 %}<span style="color:#1f9d3a;">★</span>
+  {% elif r >= 1.5 %}<span style="color:#1f9d3a;">⯨</span>
+  {% else %}<span style="color:#bbb;">☆</span>{% endif %}
+
+  {# 3 #}
+  {% if r >= 3 %}<span style="color:#1f9d3a;">★</span>
+  {% elif r >= 2.5 %}<span style="color:#1f9d3a;">⯨</span>
+  {% else %}<span style="color:#bbb;">☆</span>{% endif %}
+
+  {# 4 #}
+  {% if r >= 4 %}<span style="color:#1f9d3a;">★</span>
+  {% elif r >= 3.5 %}<span style="color:#1f9d3a;">⯨</span>
+  {% else %}<span style="color:#bbb;">☆</span>{% endif %}
+
+  {# 5 #}
+  {% if r >= 5 %}<span style="color:#1f9d3a;">★</span>
+  {% elif r >= 4.5 %}<span style="color:#1f9d3a;">⯨</span>
+  {% else %}<span style="color:#bbb;">☆</span>{% endif %}
+
+  <span style="color:#666; font-size:12px; margin-left:6px;">{{ r }}/5</span>
+</span>
+{% endwith %}

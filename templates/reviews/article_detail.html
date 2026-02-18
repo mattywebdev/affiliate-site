@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>{{ article.title }}</h1>
+
+{% if article.category %}
+  <p>
+    Category:
+    <a href="/?cat={{ article.category.slug }}">{{ article.category.name }}</a>
+  </p>
+{% endif %}
+
+<p style="white-space:pre-wrap;">{{ article.content }}</p>
+
+<hr>
+
+<h2>Products mentioned</h2>
+
+{% for p in article.products.all %}
+  <div style="border:1px solid #ddd; padding:12px; border-radius:10px; margin-bottom:12px;">
+    <h3 style="margin:0 0 8px;">
+      <a href="{% url 'reviews:product_detail' p.slug %}">{{ p.name }}</a>
+    </h3>
+    <p style="margin:0 0 8px;">£{{ p.price }}</p>
+    <a href="{% url 'reviews:affiliate_redirect' p.slug %}">Buy</a>
+  </div>
+{% empty %}
+  <p>No products linked to this article yet.</p>
+{% endfor %}
+
+<p><a href="{% url 'reviews:article_list' %}">Back to Articles</a></p>
+
+{% endblock %}

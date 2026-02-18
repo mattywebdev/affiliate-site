@@ -1,0 +1,154 @@
+:root{
+  --bg:#ffffff;
+  --text:#111827;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+  --card:#ffffff;
+  --accent:#1f9d3a;
+  --link:#4f46e5;
+}
+
+*{ box-sizing:border-box; }
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--text);
+  background:var(--bg);
+}
+
+a{ color:var(--link); text-decoration:none; }
+a:hover{ text-decoration:underline; }
+
+.container{
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* Header */
+.header{
+  border-bottom:1px solid var(--border);
+  background:#fff;
+}
+.header__inner{
+  display:flex;
+  gap:16px;
+  align-items:center;
+  padding:12px 0;
+}
+.nav{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+.nav a{
+  font-weight:600;
+}
+.search{
+  margin-left:auto;
+  display:flex;
+  gap:8px;
+}
+.input, select{
+  height:34px;
+  padding:6px 10px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  outline:none;
+}
+.input:focus, select:focus{
+  border-color:#c7d2fe;
+  box-shadow:0 0 0 3px rgba(99,102,241,.15);
+}
+
+/* Buttons */
+.btn{
+  height:34px;
+  padding:6px 12px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:#fff;
+  cursor:pointer;
+  font-weight:600;
+}
+.btn--primary{
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.btn--primary:hover{
+  background: rgba(31,157,58,.08);
+}
+.btn--ghost{
+  border-color: transparent;
+}
+.btn--ghost:hover{
+  background:#f3f4f6;
+}
+
+/* Cards / layout */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap:16px;
+}
+@media (max-width: 860px){
+  .grid{ grid-template-columns: 1fr; }
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:14px;
+}
+.card__row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+}
+.card__title{
+  margin:0;
+  font-size:18px;
+  line-height:1.2;
+}
+.card__meta{
+  margin:6px 0 0;
+  color:var(--muted);
+  font-size:13px;
+}
+.price{
+  font-weight:800;
+}
+.badges{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+}
+.pill{
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:8px 10px;
+  flex:1;
+}
+.pill h4{
+  margin:0 0 6px;
+  font-size:13px;
+}
+.pill ul{
+  margin:0;
+  padding-left:16px;
+  color:var(--text);
+  font-size:13px;
+}
+.pill .empty{
+  color:var(--muted);
+}
+
+/* Pagination */
+.pagination{
+  margin-top:18px;
+  display:flex;
+  gap:12px;
+  align-items:center;
+}

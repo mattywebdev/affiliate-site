@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Top Clicked Products</h1>
+
+{% for product in products %}
+  <div>
+    <h2>
+      <a href="{% url 'reviews:product_detail' product.slug %}">
+        {{ product.name }}
+      </a>
+    </h2>
+    <p>Clicks: {{ product.clicks }}</p>
+    <p>£{{ product.price }}</p>
+    <hr>
+  </div>
+{% empty %}
+  <p>No products yet.</p>
+{% endfor %}
+
+{% endblock %}
