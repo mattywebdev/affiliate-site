@@ -130,9 +130,9 @@ class ArticleDetailView(DetailView):
         context["categories"] = Category.objects.all()
         return context
     
-@staff_member_required
+# Temporarily public for portfolio/demo purposes
+# @staff_member_required
 def analytics_dashboard(request):
-    # timeframe selector: ?days=7 or ?days=30
     days = request.GET.get("days", "7")
     try:
         days_int = int(days)
@@ -159,6 +159,8 @@ def analytics_dashboard(request):
         .order_by("day")
     )
 
+    total_clicks = sum(p['clicks'] for p in top_products)
+
     return render(
         request,
         "reviews/analytics.html",
@@ -166,6 +168,7 @@ def analytics_dashboard(request):
             "days": days_int,
             "top_products": top_products,
             "clicks_per_day": clicks_per_day,
+            "total_clicks": total_clicks,
         },
     )
 
