@@ -8,7 +8,53 @@ from django.db.models import F, Count
 from django.contrib.admin.views.decorators import staff_member_required
 from django.utils import timezone
 from django.db.models.functions import TruncDate
+from .utils.geo import get_country_code
 
+
+AMAZON_STORES = {
+    "GB": ("amazon.co.uk", "mattydev-21"),
+    "PL": ("amazon.pl", "mattydev04-21"),
+    "DE": ("amazon.de", "your-german-tag"),
+}
+
+
+def get_client_ip(request):
+    forwarded_for = request.META.get("HTTP_X_FORWARDED_FOR")
+
+    if forwarded_for:
+        return forwarded_for.split(",")[0].strip()
+
+    return request.META.get("REMOTE_ADDR")
+
+
+def build_amazon_url(country_code, asin):
+    domain, tag = AMAZON_STORES.get(country_code, AMAZON_STORES["GB"])
+    return f"https://www.{domain}/dp/{asin}/?tag={tag}"
+
+def affiliate_redirect(request, slug):
+    product = get_object_or_404(Product, slug=slug)
+
+    ip_address = get_client_ip(request)
+
+    country_code = request.GET.get(
+        "country",
+        get_country_code(ip_address)
+    ).upper()
+
+    Click.objects.create(
+        product=product,
+        ip_address=ip_address,
+        user_agent=request.META.get("HTTP_USER_AGENT", "")[:500],
+    )
+
+    Product.objects.filter(pk=product.pk).update(clicks=F("clicks") + 1)
+
+    if product.asin:
+        url = build_amazon_url(country_code, product.asin)
+    else:
+        url = product.affiliate_link
+
+    return HttpResponseRedirect(url)
 
 class ProductListView(ListView):
     model = Product
@@ -68,20 +114,6 @@ def category_detail(request, slug):
     products = category.products.all()
     return render(request, 'reviews/category_detail.html', {'category': category, 'products': products})
 
-def affiliate_redirect(request, slug):
-    product = get_object_or_404(Product, slug=slug)
-
-    # 1) store raw click event
-    Click.objects.create(
-        product=product,
-        ip_address=request.META.get("REMOTE_ADDR"),
-        user_agent=request.META.get("HTTP_USER_AGENT", "")[:500],  # keep it reasonable
-    )
-
-    # 2) keep fast counter for sorting/leaderboards
-    Product.objects.filter(pk=product.pk).update(clicks=F("clicks") + 1)
-
-    return HttpResponseRedirect(product.affiliate_link)
 
 class TopProductsView(ListView):
     model = Product
