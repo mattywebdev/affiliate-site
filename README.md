@@ -40,7 +40,7 @@ Designed to showcase curated product picks, detailed reviews, and track affiliat
   - Latest articles
   - Top rated products
   - Most clicked products
-- 🔐 Admin analytics panel (staff only)
+- 🔐 Admin analytics panel (`https://www.matty-dev.com/analytics/`)
 - 🖼️ Custom media handling (product + article images)
 - 📱 Mobile-friendly responsive layout
 - ⚙️ Production-ready setup (Gunicorn, static/media config)
