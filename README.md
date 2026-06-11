@@ -3,7 +3,7 @@
 A niche product review platform built with Django, focused on tech/gadgets.  
 Designed to showcase curated product picks, detailed reviews, and track affiliate clicks.
 
-🔗 **Live:** https://matty-dev.com
+🔗 **Live:** [https://matty-dev.com](https://affiliate.matty-dev.com)
 
 ---
 
