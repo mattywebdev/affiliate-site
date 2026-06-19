@@ -1,9 +1,9 @@
 # 🚀 Affiliate Review Site
 
-A niche product review platform built with Django, focused on tech/gadgets.  
-Designed to showcase curated product picks, detailed reviews, and track affiliate clicks.
+A full-stack Django affiliate review platform for curated tech and gadget recommendations.
+It combines product listings, editorial articles, affiliate redirects, and click analytics in a production-deployed web app.
 
-🔗 **Live:** [https://matty-dev.com](https://affiliate.matty-dev.com)
+🔗 **Live:** [https://affiliate.matty-dev.com](https://affiliate.matty-dev.com)
 
 ---
 
@@ -40,10 +40,20 @@ Designed to showcase curated product picks, detailed reviews, and track affiliat
   - Latest articles
   - Top rated products
   - Most clicked products
-- 🔐 Admin analytics panel (`https://www.matty-dev.com/analytics/`)
+- 🔐 Admin analytics panel (`https://affiliate.matty-dev.com/analytics/`)
 - 🖼️ Custom media handling (product + article images)
 - 📱 Mobile-friendly responsive layout
 - ⚙️ Production-ready setup (Gunicorn, static/media config)
+
+---
+
+## 🧩 What This Demonstrates
+
+- Full-stack Django development with models, views, templates, routing, and admin workflows
+- Practical product thinking around search, sorting, categories, ratings, and editorial content
+- Affiliate redirect handling with click logging, basic geo-aware Amazon store routing, and analytics
+- Responsive custom UI built with HTML and CSS without relying on a frontend framework
+- Production deployment awareness, including environment-based settings and static/media handling
 
 ---
 
@@ -81,6 +91,9 @@ source venv/bin/activate   # Windows: venv\Scripts\activate
 
 pip install -r requirements.txt
 
+cp .env.example .env
+# Add your own DJANGO_SECRET_KEY value before deploying
+
 python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
@@ -98,10 +111,10 @@ systemctl restart gunicorn
 ## 🔮 Future Improvements
 
 - Amazon API integration  
-- User accounts & saved products  
-- Product comparison tool  
-- Pagination / infinite scroll  
-- PostgreSQL migration  
+- User accounts & saved products
+- Product comparison tool
+- Pagination / infinite scroll
+- PostgreSQL migration for production-scale data
 - SEO improvements (structured data, sitemap)  
 
 ---
