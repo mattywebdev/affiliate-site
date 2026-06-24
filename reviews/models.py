@@ -12,7 +12,7 @@ class Category(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("reviews:product_detail", args=[self.slug])
+        return reverse("reviews:category_detail", args=[self.slug])
 
 class Product(models.Model):
     VISUAL_MONITOR = "monitor"
@@ -55,6 +55,9 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("reviews:product_detail", args=[self.slug])
 
     @property
     def pros_list(self):
