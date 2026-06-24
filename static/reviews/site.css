@@ -1078,6 +1078,419 @@ a:hover{ text-decoration:underline; }
 }
 
 /* =========================
+   Editorial Product Visual
+========================= */
+
+.product-visual {
+    --visual-bg-1: #f8fafc;
+    --visual-bg-2: #e5e7eb;
+    --visual-accent: #4338ca;
+    --visual-accent-2: #06b6d4;
+    --visual-ink: #0f172a;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 238px;
+    overflow: hidden;
+    border-radius: 22px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    background:
+        radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.84), transparent 27%),
+        radial-gradient(circle at 84% 78%, rgba(255, 255, 255, 0.26), transparent 28%),
+        linear-gradient(135deg, var(--visual-bg-1), var(--visual-bg-2));
+    color: var(--visual-ink);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.product-visual--gaming {
+    --visual-bg-1: #111827;
+    --visual-bg-2: #312e81;
+    --visual-accent: #8b5cf6;
+    --visual-accent-2: #22d3ee;
+    --visual-ink: #f8fafc;
+}
+
+.product-visual--office {
+    --visual-bg-1: #f8fafc;
+    --visual-bg-2: #dbeafe;
+    --visual-accent: #0f766e;
+    --visual-accent-2: #2563eb;
+    --visual-ink: #0f172a;
+}
+
+.product-visual--budget {
+    --visual-bg-1: #f7fee7;
+    --visual-bg-2: #dcfce7;
+    --visual-accent: #16a34a;
+    --visual-accent-2: #f59e0b;
+    --visual-ink: #102a1f;
+}
+
+.product-visual--laptop {
+    --visual-bg-1: #eef2ff;
+    --visual-bg-2: #e0f2fe;
+    --visual-accent: #4f46e5;
+    --visual-accent-2: #0891b2;
+    --visual-ink: #0f172a;
+}
+
+.product-visual--storage {
+    --visual-bg-1: #f8fafc;
+    --visual-bg-2: #e2e8f0;
+    --visual-accent: #475569;
+    --visual-accent-2: #14b8a6;
+    --visual-ink: #0f172a;
+}
+
+.product-visual--accessory {
+    --visual-bg-1: #fff7ed;
+    --visual-bg-2: #ffedd5;
+    --visual-accent: #ea580c;
+    --visual-accent-2: #7c3aed;
+    --visual-ink: #1f2937;
+}
+
+.product-visual__ambient {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 78% 20%, color-mix(in srgb, var(--visual-accent) 32%, transparent), transparent 26%),
+        radial-gradient(circle at 16% 76%, color-mix(in srgb, var(--visual-accent-2) 26%, transparent), transparent 30%);
+    opacity: 0.9;
+}
+
+.product-visual::after {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    pointer-events: none;
+}
+
+.product-visual__desk {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 34px 30px 0;
+}
+
+.product-visual__screen {
+    position: relative;
+    width: min(80%, 286px);
+    aspect-ratio: 16 / 9;
+    border-radius: 14px 14px 11px 11px;
+    padding: 8px 8px 13px;
+    background:
+        linear-gradient(180deg, #263142, #0f172a 22%, #020617 100%);
+    box-shadow:
+        0 24px 40px rgba(15, 23, 42, 0.22),
+        0 8px 16px rgba(15, 23, 42, 0.18),
+        0 0 0 1px rgba(255, 255, 255, 0.18) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.65) inset;
+}
+
+.product-visual__bezel-glow {
+    position: absolute;
+    inset: 2px;
+    border-radius: 13px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.24), transparent 28%, rgba(255,255,255,0.08) 70%, transparent);
+    pointer-events: none;
+}
+
+.product-visual__glass {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 8px 8px 5px 5px;
+    background:
+        radial-gradient(circle at 78% 28%, color-mix(in srgb, var(--visual-accent-2) 74%, transparent), transparent 18%),
+        linear-gradient(135deg, color-mix(in srgb, var(--visual-accent) 52%, #111827), transparent 42%),
+        linear-gradient(145deg, #020617, #111827 74%);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.09) inset,
+        0 0 28px color-mix(in srgb, var(--visual-accent) 18%, transparent);
+}
+
+.product-visual__screen-grid {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.18;
+}
+
+.product-visual__glass span {
+    position: absolute;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.82);
+    opacity: 0.82;
+}
+
+.product-visual__glass span:nth-child(1) {
+    width: 35%;
+    height: 6px;
+    left: 12%;
+    top: 23%;
+}
+
+.product-visual__glass span:nth-child(2) {
+    width: 50%;
+    height: 6px;
+    left: 12%;
+    top: 40%;
+    opacity: 0.58;
+}
+
+.product-visual__glass span:nth-child(3) {
+    width: 28%;
+    height: 6px;
+    left: 12%;
+    top: 57%;
+    opacity: 0.42;
+}
+
+.product-visual__shine {
+    position: absolute;
+    inset: 7px;
+    border-radius: 8px;
+    background:
+        linear-gradient(116deg, rgba(255,255,255,0.38), rgba(255,255,255,0.08) 30%, transparent 45%),
+        radial-gradient(circle at 14% 18%, rgba(255,255,255,0.2), transparent 20%);
+    pointer-events: none;
+}
+
+.product-visual__panel-lines {
+    position: absolute;
+    inset: 18px 18px auto auto;
+    width: 42px;
+    height: 34px;
+    border-radius: 9px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    background:
+        linear-gradient(rgba(255,255,255,0.36), rgba(255,255,255,0.36)) 9px 9px / 24px 3px no-repeat,
+        linear-gradient(rgba(255,255,255,0.22), rgba(255,255,255,0.22)) 9px 17px / 18px 3px no-repeat,
+        rgba(255, 255, 255, 0.08);
+}
+
+.product-visual__chin {
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    bottom: 5px;
+    height: 8px;
+    border-radius: 0 0 8px 8px;
+    background: linear-gradient(90deg, #111827, #374151 50%, #111827);
+    box-shadow: 0 -1px 0 rgba(255,255,255,0.08) inset;
+}
+
+.product-visual__chin i {
+    position: absolute;
+    left: 50%;
+    top: 2px;
+    width: 4px;
+    height: 4px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--visual-accent-2) 70%, #ffffff);
+    box-shadow: 0 0 8px color-mix(in srgb, var(--visual-accent-2) 64%, transparent);
+}
+
+.product-visual__chin b {
+    position: absolute;
+    right: 14px;
+    top: 3px;
+    width: 22px;
+    height: 2px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.product-visual__neck {
+    width: 46px;
+    height: 34px;
+    transform: perspective(80px) rotateX(4deg);
+    background:
+        linear-gradient(90deg, #0b1120, #475569 50%, #0b1120),
+        linear-gradient(180deg, rgba(255,255,255,0.2), transparent);
+    box-shadow:
+        0 14px 20px rgba(15, 23, 42, 0.2),
+        0 0 0 1px rgba(255,255,255,0.06) inset;
+}
+
+.product-visual__stand {
+    position: relative;
+    width: 132px;
+    height: 22px;
+    border-radius: 999px 999px 11px 11px;
+    transform: perspective(90px) rotateX(12deg);
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.2), transparent 52%),
+        linear-gradient(90deg, #0b1120, #4b5563 50%, #0b1120);
+    box-shadow:
+        0 16px 22px rgba(15, 23, 42, 0.18),
+        0 0 0 1px rgba(255,255,255,0.08) inset;
+}
+
+.product-visual__stand span {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    bottom: 3px;
+    height: 3px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.13);
+}
+
+.product-visual__table-shadow {
+    width: 190px;
+    height: 18px;
+    margin-top: -4px;
+    border-radius: 999px;
+    background: radial-gradient(ellipse, rgba(15, 23, 42, 0.2), transparent 70%);
+    filter: blur(1px);
+}
+
+.product-visual__meta {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 18px;
+    background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.5));
+}
+
+.product-visual--gaming .product-visual__meta {
+    background: linear-gradient(180deg, transparent, rgba(15, 23, 42, 0.7));
+}
+
+.product-visual__kicker {
+    margin: 0 0 5px;
+    font-size: 11px;
+    line-height: 1.1;
+    font-weight: 900;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--visual-ink) 72%, var(--visual-accent));
+}
+
+.product-visual__name {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0;
+    max-width: 24ch;
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 900;
+    color: var(--visual-ink);
+}
+
+.product-visual__chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 6px;
+    flex: 0 0 auto;
+    max-width: 46%;
+}
+
+.product-visual__chips span {
+    padding: 5px 7px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    color: #111827;
+    font-size: 11px;
+    line-height: 1;
+    font-weight: 900;
+    box-shadow: 0 5px 12px rgba(15, 23, 42, 0.08);
+}
+
+.product-visual--gaming .product-visual__chips span {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+.article-product-image-link,
+.inline-product-card-image-link,
+.category-product-image-link,
+.home-product-visual-link {
+    display: block;
+    text-decoration: none;
+}
+
+.article-product-image-link .product-visual,
+.inline-product-card-image-link .product-visual {
+    min-height: 140px;
+    border-radius: 18px;
+}
+
+.article-product-image-link .product-visual__desk,
+.inline-product-card-image-link .product-visual__desk {
+    padding: 20px 16px 0;
+}
+
+.article-product-image-link .product-visual__meta,
+.inline-product-card-image-link .product-visual__meta {
+    display: none;
+}
+
+.article-product-image-link .product-visual__screen,
+.inline-product-card-image-link .product-visual__screen {
+    width: 86%;
+}
+
+.inline-product-image-link .product-visual {
+    width: min(100%, 520px);
+    margin: 0 auto;
+}
+
+.home-product-card .product-visual {
+    height: 170px;
+    min-height: 0;
+    border-radius: 14px;
+}
+
+.home-product-card .product-visual__desk {
+    padding: 30px 18px 0;
+}
+
+.home-product-card .product-visual__meta {
+    display: none;
+}
+
+.home-product-card .product-visual__screen {
+    width: min(74%, 220px);
+}
+
+.home-product-card .product-visual__neck {
+    height: 24px;
+}
+
+.product-wrap > .card:first-child .product-visual {
+    min-height: 260px;
+}
+
+.product-wrap > .card:first-child .product-visual__name {
+    display: none;
+}
+
+.product-wrap > .card:first-child .product-visual__meta {
+    align-items: center;
+}
+
+/* =========================
    Category Detail Page
 ========================= */
 
@@ -1938,6 +2351,8 @@ a:hover{ text-decoration:underline; }
 }
 
 .home-product-card {
+  display: flex;
+  flex-direction: column;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   border: 1px solid #eee;
   border-radius: 16px;
@@ -1962,13 +2377,17 @@ a:hover{ text-decoration:underline; }
 
 .home-product-header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   gap: 10px;
-  align-items: flex-start;
+  align-items: stretch;
   margin-top: 10px;
 }
 
 .home-product-name {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   font-weight: 700;
   font-size: 16px;
   line-height: 1.35;
@@ -2009,7 +2428,8 @@ a:hover{ text-decoration:underline; }
 .home-product-actions {
   display: flex;
   gap: 10px;
-  margin-top: 10px;
+  margin-top: auto;
+  padding-top: 10px;
   flex-wrap: wrap;
 }
 

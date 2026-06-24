@@ -41,15 +41,9 @@
   <div class="home-product-row">
     {% for p in top_rated %}
       <div class="home-product-card">
-        {% if p.image %}
-          <a href="{% url 'reviews:product_detail' p.slug %}">
-            <img
-              src="{{ p.image.url }}"
-              alt="{{ p.name }}"
-              class="home-product-image"
-            >
-          </a>
-        {% endif %}
+        <a href="{% url 'reviews:product_detail' p.slug %}" class="home-product-visual-link">
+          {% include "reviews/includes/product_visual.html" with product=p %}
+        </a>
 
         <div class="home-product-header">
           <div>
@@ -90,6 +84,10 @@
   <div class="home-product-row home-product-row--compact">
     {% for p in most_clicked %}
       <div class="home-product-card">
+        <a href="{% url 'reviews:product_detail' p.slug %}" class="home-product-visual-link">
+          {% include "reviews/includes/product_visual.html" with product=p %}
+        </a>
+
         <div class="home-product-header">
           <a href="{% url 'reviews:product_detail' p.slug %}" class="home-product-name">
             {{ p.name }}

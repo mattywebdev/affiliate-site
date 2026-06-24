@@ -11,7 +11,7 @@ It combines product listings, editorial articles, affiliate redirects, and click
 
 ### 🖥️ Homepage (Desktop)
 <p align="center">
-  <a href="https://matty-dev.com">
+  <a href="https://affiliate.matty-dev.com">
     <img src="screenshots/homepage-desktop.png" width="800">
   </a>
 </p>
@@ -41,7 +41,7 @@ It combines product listings, editorial articles, affiliate redirects, and click
   - Top rated products
   - Most clicked products
 - 🔐 Admin analytics panel (`https://affiliate.matty-dev.com/analytics/`)
-- 🖼️ Custom media handling (product + article images)
+- 🎨 CSS-driven product visuals plus article image handling
 - 📱 Mobile-friendly responsive layout
 - ⚙️ Production-ready setup (Gunicorn, static/media config)
 
@@ -115,7 +115,8 @@ systemctl restart gunicorn
 - Product comparison tool
 - Pagination / infinite scroll
 - PostgreSQL migration for production-scale data
-- SEO improvements (structured data, sitemap)  
+- Expanded hardware categories beyond monitors
+- Search Console monitoring and content expansion
 
 ---
 

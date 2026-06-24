@@ -10,15 +10,15 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ("name", "slug", "price", "category", "image", "clicks", "rating", "asin")
+    list_display = ("name", "slug", "price", "category", "visual_type", "clicks", "rating", "asin", "updated_at")
     search_fields = ("name","slug")
-    list_filter = ("category",)
+    list_filter = ("category", "visual_type")
     prepopulated_fields = {"slug": ("name",)}
-    list_display_links = ("name", "slug", "price", "category", "image")
+    list_display_links = ("name", "slug", "price", "category")
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ("title", "slug", "category", "created_at")
+    list_display = ("title", "slug", "category", "created_at", "updated_at")
     list_filter = ("category",)
     search_fields = ("title", "excerpt", "content")
     prepopulated_fields = {"slug": ("title",)}

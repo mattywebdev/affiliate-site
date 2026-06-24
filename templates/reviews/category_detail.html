@@ -36,11 +36,9 @@
     <div class="category-products-grid">
       {% for product in products %}
         <div class="category-product-card">
-          {% if product.image %}
-            <a href="{% url 'reviews:product_detail' product.slug %}" class="category-product-image-link">
-              <img src="{{ product.image.url }}" alt="{{ product.name }}" class="category-product-image">
-            </a>
-          {% endif %}
+          <a href="{% url 'reviews:product_detail' product.slug %}" class="category-product-image-link">
+            {% include "reviews/includes/product_visual.html" with product=product %}
+          </a>
 
           <div class="category-product-body">
             <h3 class="category-product-title">

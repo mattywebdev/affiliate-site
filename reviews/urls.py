@@ -6,6 +6,8 @@ app_name = "reviews"
 
 urlpatterns = [
     path("", HomePageView.as_view(), name="home"),
+    path("robots.txt", views.robots_txt, name="robots_txt"),
+    path("sitemap.xml", views.sitemap_xml, name="sitemap_xml"),
     path("products/", ProductListView.as_view(), name="product_list"),
     path("category/<slug:slug>/", views.category_detail, name="category_detail"),
     path("go/<slug:slug>/", views.affiliate_redirect, name="affiliate_redirect"),

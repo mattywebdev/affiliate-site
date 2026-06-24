@@ -40,13 +40,23 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DJANGO_DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ["matty-dev.com", "www.matty-dev.com", "134.122.99.3", "localhost", "127.0.0.1"]
+SITE_NAME = os.environ.get("SITE_NAME", "Matty Dev Deals")
+SITE_URL = os.environ.get("SITE_URL", "https://affiliate.matty-dev.com").rstrip("/")
+SITE_DESCRIPTION = os.environ.get(
+    "SITE_DESCRIPTION",
+    "Practical monitor buying guides, concise product comparisons, and value-focused affiliate recommendations.",
+)
+ALLOWED_HOSTS = [
+    "affiliate.matty-dev.com",
+    "134.122.99.3",
+    "localhost",
+    "127.0.0.1",
+]
 
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://matty-dev.com",
-    "https://www.matty-dev.com",
+    "https://affiliate.matty-dev.com",
 ]
 
 # Application definition

@@ -145,13 +145,7 @@
 
 <div class="product-wrap">
   <div class="card">
-    {% if product.image %}
-      <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-main-image">
-    {% elif product.amazon_image_url %}
-    <img src="{{ product.amazon_image_url }}" alt="{{ product.name }}" class="product-main-image">
-    {% else %}
-    <div class="img-placeholder">No image</div>
-    {% endif %}
+    {% include "reviews/includes/product_visual.html" with product=product %}
 
     <div style="margin-top:12px;">
       <div class="stars" aria-label="Rating {{ product.rating }} out of 5">

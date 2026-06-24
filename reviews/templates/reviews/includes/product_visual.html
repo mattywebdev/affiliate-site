@@ -1,0 +1,39 @@
+<div class="product-visual product-visual--{{ product.visual_type|default:'monitor' }} product-visual--{{ product.category.slug|default:'default' }}" aria-label="{{ product.name }}">
+  <div class="product-visual__ambient"></div>
+  <div class="product-visual__desk">
+    <div class="product-visual__screen">
+      <div class="product-visual__bezel-glow"></div>
+      <div class="product-visual__glass">
+        <div class="product-visual__screen-grid"></div>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="product-visual__shine"></div>
+      <div class="product-visual__panel-lines"></div>
+      <div class="product-visual__chin">
+        <i></i>
+        <b></b>
+      </div>
+    </div>
+    <div class="product-visual__neck"></div>
+    <div class="product-visual__stand">
+      <span></span>
+    </div>
+    <div class="product-visual__table-shadow"></div>
+  </div>
+
+  <div class="product-visual__meta">
+    <div>
+      <p class="product-visual__kicker">{{ product.visual_tagline }}</p>
+      <p class="product-visual__name">{{ product.name }}</p>
+    </div>
+    <div class="product-visual__chips">
+      {% for spec in product.visual_specs %}
+        <span>{{ spec }}</span>
+      {% empty %}
+        <span>Curated</span>
+      {% endfor %}
+    </div>
+  </div>
+</div>

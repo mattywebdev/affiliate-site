@@ -31,7 +31,7 @@
           {{ article.category.name }}
         </a>
       {% endif %}
-      <span class="article-card-date">{{ article.created_at|date:"d M Y" }}</span>
+      <span class="article-card-date">Updated {{ article.updated_at|date:"d M Y" }}</span>
     </div>
 
     <a href="{% url 'reviews:article_detail' article.slug %}" class="article-card-title">

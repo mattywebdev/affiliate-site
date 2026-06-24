@@ -38,13 +38,7 @@
       <article class="product-card">
 
         <a href="{% url 'reviews:product_detail' product.slug %}" class="product-card-image-link">
-          {% if product.image %}
-            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-card-image">
-          {% elif product.amazon_image_url %}
-            <img src="{{ product.amazon_image_url }}" alt="{{ product.name }}" class="product-card-image">
-          {% else %}
-            <div class="product-card-image-placeholder">No image</div>
-          {% endif %}
+          {% include "reviews/includes/product_visual.html" with product=product %}
         </a>
 
         <div class="product-card-body">

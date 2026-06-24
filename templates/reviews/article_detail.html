@@ -14,7 +14,7 @@
     <h1 class="article-title">{{ article.title }}</h1>
 
     <div class="article-meta">
-      <span class="article-meta-date">{{ article.created_at|date:"d M Y" }}</span>
+      <span class="article-meta-date">Updated {{ article.updated_at|date:"d M Y" }}</span>
       {% if article.products.count %}
         <span class="article-meta-separator">•</span>
         <span class="article-meta-count">{{ article.products.count }} picks included</span>
@@ -77,15 +77,9 @@
           <div class="article-product-card">
 
             <div class="article-product-media">
-              {% if p.image %}
-                <a href="{% url 'reviews:product_detail' p.slug %}" class="article-product-image-link">
-                  <img src="{{ p.image.url }}" alt="{{ p.name }}" class="article-product-image">
-                </a>
-              {% else %}
-                <a href="{% url 'reviews:product_detail' p.slug %}" class="article-product-image-link">
-                  <div class="article-product-image-placeholder">No image</div>
-                </a>
-              {% endif %}
+              <a href="{% url 'reviews:product_detail' p.slug %}" class="article-product-image-link">
+                {% include "reviews/includes/product_visual.html" with product=p %}
+              </a>
             </div>
 
             <div class="article-product-main">

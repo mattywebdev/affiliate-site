@@ -1,10 +1,6 @@
 <div class="inline-product-image-wrap">
   <a href="{% url 'reviews:product_detail' product.slug %}" class="inline-product-image-link">
-    {% if product.image %}
-      <img src="{{ product.image.url }}" alt="{{ product.name }}" class="inline-product-image">
-    {% else %}
-      <div class="inline-product-image-placeholder">No image</div>
-    {% endif %}
+    {% include "reviews/includes/product_visual.html" with product=product %}
     <p class="inline-product-image-caption">{{ product.name }}</p>
   </a>
 </div>

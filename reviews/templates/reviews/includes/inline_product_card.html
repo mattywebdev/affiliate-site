@@ -1,11 +1,7 @@
 <div class="inline-product-card">
   <div class="inline-product-card-media">
     <a href="{% url 'reviews:product_detail' product.slug %}" class="inline-product-card-image-link">
-      {% if product.image %}
-        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="inline-product-card-image">
-      {% else %}
-        <div class="inline-product-card-placeholder">No image</div>
-      {% endif %}
+      {% include "reviews/includes/product_visual.html" with product=product %}
     </a>
   </div>
 
